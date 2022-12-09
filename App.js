@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  Alert,
   Button,
-  Pressable,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -15,8 +13,9 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
+const App = props => {
   const isDarkMode = useColorScheme() === 'dark';
+  console.log('This is Message From Native:', props.message_from_native);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

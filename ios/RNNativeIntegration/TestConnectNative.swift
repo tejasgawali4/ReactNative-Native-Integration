@@ -34,6 +34,7 @@ class TestConnectNativeModule: NSObject {
     
     @objc
     func dismissViewController (_ reactTag: NSNumber) {
+//        print("react tag: \(reactTag)")
         DispatchQueue.main.async {
             if let view = RNViewManager.sharedInstance.bridge?.uiManager.view(forReactTag: reactTag) {
                 let reactNativeVC: UIViewController! = view.reactViewController()

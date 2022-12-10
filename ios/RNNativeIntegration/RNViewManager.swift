@@ -14,7 +14,10 @@ class RNViewManager: NSObject {
     }
     
     func viewForModule(_ moduleName: String, initialProperties: [String : Any]?) -> RCTRootView {
+        print("viewForModule : \(String(describing: initialProperties))");
+        print("moduleName : \(moduleName)");
         let viewBridge = createBridgeIfNeeded()
+        print("viewBridge : \(viewBridge)");
         let rootView: RCTRootView = RCTRootView(
             bridge: viewBridge,
             moduleName: moduleName,

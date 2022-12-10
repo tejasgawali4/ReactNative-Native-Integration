@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button,
   SafeAreaView,
@@ -12,10 +12,14 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import constantStrings from './constants/constantStrings';
+import TestConnectNative from './rn-bridge/TestConnectNative';
+// export let rootTag = 1;
 
 const App = props => {
   const isDarkMode = useColorScheme() === 'dark';
   console.log('This is Message From Native:', props.message_from_native);
+  const {rootTag} = props;
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -23,6 +27,7 @@ const App = props => {
 
   const onClick = () => {
     console.log('clicked..');
+    TestConnectNative.exitRN(rootTag);
   }
 
   return (
@@ -36,8 +41,9 @@ const App = props => {
         style={[styles.scroll, backgroundStyle]}
       >
         <View style={styles.container}>
-          <Text> This is React Native Screen 1</Text>
-          <Button onPress={onClick} title="Navigate to Native"/>
+          <Text style={{fontSize:15, fontWeight: 'bold', padding: 20}}> This is React Native Screen 1</Text>
+          <Text> message_from_native : {props.message_from_native} </Text>
+          <Button style={{marginTop: 50}} onPress={onClick} title="Navigate to Native"/>
         </View>
       </ScrollView>
     </SafeAreaView>
